@@ -1,0 +1,12 @@
+name: QuizCupRemastered
+version: '${project.version}'
+main: de.zblubba.quizcupremastered.QuizCupRemastered
+api-version: 1.19
+authors: [ zBlubba ]
+description: Remastered Version of the old QuizCup Plugin
+website: https://zblubba.de
+
+commands:
+  fly:
+    permission: quizcup.helper
+    description: Toggles the permission to fly
