@@ -8,6 +8,27 @@ import org.bukkit.entity.Player;
 public class MessageCollection {
 
     static Configuration config = QuizCupRemastered.config;
+    static Configuration mysql = QuizCupRemastered.mysqlConfig;
+
+    // ---------------------------------------------------------------
+
+    //MYSQL
+    public static String getMySQLDatabase() {
+        String database = mysql.getString("database");
+        return database;
+    }
+    public static String getMySQLUser() {
+        String user = mysql.getString("user");
+        return user;
+    }
+    public static String getMySQLPassword() {
+        String password = mysql.getString("password");
+        return password;
+    }
+    public static String getMySQLHost() {
+        String host = mysql.getString("host");
+        return host;
+    }
 
     // ---------------------------------------------------------------
 

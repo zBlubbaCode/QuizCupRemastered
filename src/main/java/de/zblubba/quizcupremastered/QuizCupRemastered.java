@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -43,6 +44,9 @@ public final class QuizCupRemastered extends JavaPlugin {
 
     public static File winnerFile = new File("plugins/QuizCupRemastered", "winnerlist.yml");
     public static FileConfiguration winnerConfig = YamlConfiguration.loadConfiguration(winnerFile);
+
+    public static File mysqlFile = new File("plugins/QuizCupRemastered", "mysql.yml");
+    public static FileConfiguration mysqlConfig = YamlConfiguration.loadConfiguration(mysqlFile);
 
     @Override
     public void onEnable() {
@@ -93,11 +97,13 @@ public final class QuizCupRemastered extends JavaPlugin {
     }
     public void registerCommands() {
         getCommand("fly").setExecutor(new FlyCommand());
+        getCommand("spawn").setExecutor(new SpawnCommand());
+        getCommand("mysql").setExecutor(new MySQLCommand());
     }
 
 
     public static void createFiles() {
-        if(!QuizCupRemastered.configFile.exists() || !QuizCupRemastered.frageFile.exists() || !QuizCupRemastered.allowedPlayersFile.exists() || !QuizCupRemastered.winnerFile.exists()) {
+        if(!QuizCupRemastered.configFile.exists() || !QuizCupRemastered.frageFile.exists() || !QuizCupRemastered.allowedPlayersFile.exists() || !QuizCupRemastered.winnerFile.exists() || !QuizCupRemastered.mysqlFile.exists()) {
             QuizCupRemastered.getInstance().getLogger().info("One or more files were not found. Creating...");
             if(!QuizCupRemastered.configFile.exists()) {
                 QuizCupRemastered.configFile.getParentFile().mkdirs();
@@ -115,6 +121,11 @@ public final class QuizCupRemastered extends JavaPlugin {
                 QuizCupRemastered.winnerFile.getParentFile().mkdirs();
                 QuizCupRemastered.getInstance().saveResource("winnerlist.yml", false);
             }
+            if(!QuizCupRemastered.mysqlFile.exists()) {
+                QuizCupRemastered.mysqlFile.getParentFile().mkdirs();
+                QuizCupRemastered.getInstance().saveResource("mysql.yml", false);
+            }
+
         }
     }
 
@@ -125,6 +136,7 @@ public final class QuizCupRemastered extends JavaPlugin {
             QuizCupRemastered.fragen.load(frageFile);
             QuizCupRemastered.playersConfig.load(allowedPlayersFile);
             QuizCupRemastered.winnerConfig.load(winnerFile);
+            QuizCupRemastered.mysqlConfig.load(mysqlFile);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         } catch (InvalidConfigurationException exception) {
@@ -137,6 +149,14 @@ public final class QuizCupRemastered extends JavaPlugin {
             configuration.save(file);
         } catch (IOException ex) {
             ex.printStackTrace();
+        }
+    }
+
+    public static void recreatePlayerList() {
+        for(Player p : Bukkit.getOnlinePlayers()) {
+            if(!p.hasPermission("quizcup.helper") && !p.hasPermission("quizcup.admin")) {
+                playerList.add(p.getName());
+            }
         }
     }
 

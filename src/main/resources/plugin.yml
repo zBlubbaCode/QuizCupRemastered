@@ -10,3 +10,8 @@ commands:
   fly:
     permission: quizcup.helper
     description: Toggles the permission to fly
+  spawn:
+    description: teleports a player to the spawn
+  mysql:
+    permission: quizcup.mysql
+    description: command for testing purposes only

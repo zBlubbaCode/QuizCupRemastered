@@ -22,6 +22,7 @@ public class JoinQuitListener implements Listener {
         Player p = event.getPlayer();
 
         event.setJoinMessage(MessageCollection.getJoinMessage(p));
+        QuizCupRemastered.playerList.add(p.getName());
 
         if(QuizCupRemastered.isServerClosed) {if(!p.hasPermission("quizcup.bypass") && !QuizCupRemastered.allowedList.contains(p.getName())) {p.kickPlayer("§e§lQuizCup\n\n§cDer Server ist zurzeit geschlossen!");}}
         if(p.hasPermission("quizcup.admin")) {
@@ -55,6 +56,7 @@ public class JoinQuitListener implements Listener {
         Player p = event.getPlayer();
 
         event.setQuitMessage(MessageCollection.getQuitMessage(p));
+        QuizCupRemastered.playerList.remove(p.getName());
     }
 
 
