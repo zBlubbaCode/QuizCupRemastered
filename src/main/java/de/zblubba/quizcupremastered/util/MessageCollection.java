@@ -93,6 +93,9 @@ public class MessageCollection {
         return quitFormat;
     }
 
+    public static String actionbarMessage(Player p) {String actionbarMessage = config.getString("actionbar.message"); actionbarMessage = replaceWithVariables(actionbarMessage); actionbarMessage = actionbarMessage.replace("{player}", p.getName()); return actionbarMessage;}
+
+
     // ---------------------------------------------------------------
 
     public static String replaceWithVariables(String input) {

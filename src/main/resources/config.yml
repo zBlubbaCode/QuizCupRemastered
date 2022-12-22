@@ -51,6 +51,10 @@ prefixes:
   helper: '&6Helper &8| &6{player}'
   player: '&b{player}'
 
+actionbar:
+  enabled: true
+  message: '{prefix} &cstarting soon...'
+
 scoreboard:
   enabled: true
   title: 'QuizCup'

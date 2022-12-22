@@ -2,6 +2,8 @@ package de.zblubba.quizcupremastered.listeners;
 
 import de.zblubba.quizcupremastered.QuizCupRemastered;
 import de.zblubba.quizcupremastered.util.MessageCollection;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.*;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.enchantments.Enchantment;
@@ -16,6 +18,7 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class JoinQuitListener implements Listener {
 
+    int taskid;
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
@@ -44,6 +47,14 @@ public class JoinQuitListener implements Listener {
 
         QuizCupRemastered.getInstance().scoreboard.setScoreboard(p);
         QuizCupRemastered.getInstance().scoreboard.setTab(p);
+
+        if(QuizCupRemastered.config.getBoolean("actionbar.enabled")) {
+            taskid = Bukkit.getScheduler().scheduleSyncRepeatingTask(QuizCupRemastered.getPlugin(QuizCupRemastered.class), () -> {
+                for(Player players : Bukkit.getOnlinePlayers()) {
+                    players.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageCollection.actionbarMessage(players)));
+                }
+            }, 0, 40);
+        }
 
         for(Player players : Bukkit.getOnlinePlayers()) {
             QuizCupRemastered.getInstance().scoreboard.updateTab(players);
