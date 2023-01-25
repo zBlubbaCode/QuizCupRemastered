@@ -63,6 +63,8 @@ public final class QuizCupRemastered extends JavaPlugin {
         registerListeners();
         registerCommands();
 
+        recreatePlayerList();
+        checkInvis();
 
         Bukkit.getConsoleSender().sendMessage("§8--------===========--------");
         Bukkit.getConsoleSender().sendMessage("");
@@ -163,6 +165,21 @@ public final class QuizCupRemastered extends JavaPlugin {
             if(!p.hasPermission("quizcup.helper") && !p.hasPermission("quizcup.admin")) {
                 playerList.add(p.getName());
             }
+        }
+    }
+
+    public static void checkInvis() {
+        for(Player players : Bukkit.getOnlinePlayers()) {
+            for(int i = 0; i < playerList.size(); i++) {
+                Player p = Bukkit.getPlayer(playerList.get(i));
+                if(!players.hasPermission("quizcup.helper")) {
+                    p.hidePlayer(players);
+                }
+            }
+        }
+
+        if(config.getBoolean("server_closed")) {
+            isServerClosed = true;
         }
     }
 

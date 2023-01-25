@@ -18,7 +18,7 @@ public class ChatListener implements Listener {
 
         event.setMessage(p.hasPermission("quizcup.colored") ? ChatColor.translateAlternateColorCodes('&', event.getMessage()) : event.getMessage());
 
-        if(CloseChatCommand.isChatClose && !p.hasPermission("quizcup.chat.bypass")) {
+        if(CloseChatCommand.isChatClosed && !p.hasPermission("quizcup.chat.bypass")) {
             event.setCancelled(true);
             p.sendMessage(MessageCollection.getChatClosed());
         }

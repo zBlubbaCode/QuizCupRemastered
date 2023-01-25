@@ -11,16 +11,19 @@ commands:
     permission: quizcup.helper
     description: Toggles the permission to fly
   spawn:
-    description: teleports a player to the spawn
+    description: teleportiert ein spieler zum spawn
   mysql:
     permission: quizcup.mysql
     description: command for testing purposes only
   createfrage:
     permission: quizcup.frage.create
-    description: creates a question
+    description: erstellt eine frage
   addantwort:
     permission: quizcup.frage.antwort.add
     description: fügt eine Antwort zu einer Frage hinzu
   startfrage:
     permission: quizcup.frage.start
     description: startet eine frage
+  closeserver:
+    permission: quizcup.close
+    description: schließt / oeffnet den server

@@ -52,8 +52,8 @@ public class CreateFrageCommand implements CommandExecutor {
                     exception.printStackTrace();
                 }
 
-            }
-        }
+            } else sender.sendMessage("§cNutze: /createfrage <fragenID> <antwort>");
+        } else sender.sendMessage(MessageCollection.getNoPerms());
 
         return false;
     }

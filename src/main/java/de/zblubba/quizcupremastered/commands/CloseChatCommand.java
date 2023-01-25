@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 
 public class CloseChatCommand implements CommandExecutor {
 
-    public static boolean isChatClose;
+    public static boolean isChatClosed;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -17,10 +17,10 @@ public class CloseChatCommand implements CommandExecutor {
 
             if(args.length == 1) {
                 if(args[0].equalsIgnoreCase("close")) {
-                    isChatClose = true;
+                    isChatClosed = true;
                     Bukkit.broadcastMessage(MessageCollection.getCloseChat());
                 } else if(args[0].equalsIgnoreCase("open")){
-                    isChatClose = false;
+                    isChatClosed = false;
                     Bukkit.broadcastMessage(MessageCollection.getOpenChat());
                 } else {
                     sender.sendMessage(MessageCollection.getPrefix() + "Nutze §c/chat <close | open>");

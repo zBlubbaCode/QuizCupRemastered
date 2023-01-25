@@ -27,8 +27,9 @@ public class StartFrageCommand implements CommandExecutor {
                     numberOfQuestion = Integer.parseInt(args[0]);
                     startQuestion(numberOfQuestion);
                 }
-            }
-        }
+            } else sender.sendMessage("§cNutze: /startfrage <fragenID | next>");
+        } else sender.sendMessage(MessageCollection.getNoPerms());
+
         return false;
     }
 
@@ -41,7 +42,6 @@ public class StartFrageCommand implements CommandExecutor {
 
             Statement statement = connection.createStatement();
             String query = "select * from fragen where id = " + questionID;
-            Bukkit.getLogger().info(query);
             ResultSet resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {

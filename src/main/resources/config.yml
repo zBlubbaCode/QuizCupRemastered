@@ -14,6 +14,9 @@ no_permission: "&cYou don't have enough permission to perform this command!"
 # example when the console tries to perform a command
 must_be_a_player: "&cDu musst ein Spieler sein, um die ausführen zu können!"
 command_does_not_exist: "&cDieser Befehl existiert nicht!"
+# Diese Optionen ändern sich automatisch beim /invis und /closeserver Command und sind für reloads gedacht
+invis_enabled: false
+server_closed: false
 
 chat:
   close_chat: '{prefix}&cDer Chat ist nun geschlossen!'

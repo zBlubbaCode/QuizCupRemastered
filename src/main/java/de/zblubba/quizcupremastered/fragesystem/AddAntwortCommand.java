@@ -49,8 +49,8 @@ public class AddAntwortCommand implements CommandExecutor {
                     e.printStackTrace();
                 }
 
-            }
-        }
+            } else sender.sendMessage("§cNutze: /addantwort <fragenID> <antwortID> <antwort>");
+        } else sender.sendMessage(MessageCollection.getNoPerms());
 
         return false;
     }
