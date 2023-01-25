@@ -15,3 +15,12 @@ commands:
   mysql:
     permission: quizcup.mysql
     description: command for testing purposes only
+  createfrage:
+    permission: quizcup.frage.create
+    description: creates a question
+  addantwort:
+    permission: quizcup.frage.antwort.add
+    description: fügt eine Antwort zu einer Frage hinzu
+  startfrage:
+    permission: quizcup.frage.start
+    description: startet eine frage

@@ -35,9 +35,7 @@ public class JoinQuitListener implements Listener {
         }
 
         if(QuizCupRemastered.config.getBoolean("join.playsound")) {
-            Bukkit.getScheduler().runTaskLater(QuizCupRemastered.getPlugin(QuizCupRemastered.class), () -> {
-                p.playSound(p.getLocation(), Sound.valueOf(QuizCupRemastered.config.getString("join.sound")), 255, 1);
-            }, 40);
+            p.playSound(p.getLocation(), Sound.valueOf(QuizCupRemastered.config.getString("join.sound")), 255, 1);
         }
 
         Configuration config = QuizCupRemastered.config;

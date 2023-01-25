@@ -53,11 +53,11 @@ prefixes:
 
 actionbar:
   enabled: true
-  message: '{prefix} &cstarting soon...'
+  message: '%prefix% &cstarting soon...'
 
 scoreboard:
   enabled: true
-  title: 'QuizCup'
+  title: '&e&lQuiz&6&lCup'
   scores:
     - '&b'
     - '&3➥ &7Your Name'

@@ -1,6 +1,9 @@
 package de.zblubba.quizcupremastered;
 
 import de.zblubba.quizcupremastered.commands.*;
+import de.zblubba.quizcupremastered.fragesystem.AddAntwortCommand;
+import de.zblubba.quizcupremastered.fragesystem.CreateFrageCommand;
+import de.zblubba.quizcupremastered.fragesystem.StartFrageCommand;
 import de.zblubba.quizcupremastered.util.*;
 import de.zblubba.quizcupremastered.listeners.*;
 import org.bukkit.Bukkit;
@@ -99,6 +102,9 @@ public final class QuizCupRemastered extends JavaPlugin {
         getCommand("fly").setExecutor(new FlyCommand());
         getCommand("spawn").setExecutor(new SpawnCommand());
         getCommand("mysql").setExecutor(new MySQLCommand());
+        getCommand("createfrage").setExecutor(new CreateFrageCommand());
+        getCommand("addantwort").setExecutor(new AddAntwortCommand());
+        getCommand("startfrage").setExecutor(new StartFrageCommand());
     }
 
 
