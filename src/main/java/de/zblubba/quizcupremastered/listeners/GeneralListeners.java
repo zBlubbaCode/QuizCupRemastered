@@ -3,6 +3,7 @@ package de.zblubba.quizcupremastered.listeners;
 import de.zblubba.quizcupremastered.QuizCupRemastered;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -46,7 +47,8 @@ public class GeneralListeners implements Listener {
         Player p = event.getEntity();
         if(!p.hasPermission("quizcup.helper")) {
             Bukkit.getScheduler().runTaskLater(QuizCupRemastered.getPlugin(QuizCupRemastered.class), () -> {
-                p.teleport(new Location(Bukkit.getWorlds().get(0), -2.5, 107, 8.5, 180, 0));
+                Configuration config = QuizCupRemastered.config;
+                p.teleport(new Location(Bukkit.getWorld(config.getString("spawn.world")), config.getDouble("spawn.x"), config.getDouble("spawn.y"), config.getDouble("spawn.z"), (float) config.getDouble("spawn.yaw"), (float) config.getDouble("config.pitch")));
             }, 20);
         }
     }

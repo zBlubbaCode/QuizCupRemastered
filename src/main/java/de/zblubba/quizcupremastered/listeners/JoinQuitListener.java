@@ -18,7 +18,7 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class JoinQuitListener implements Listener {
 
-    int taskid;
+    public static int taskid;
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {

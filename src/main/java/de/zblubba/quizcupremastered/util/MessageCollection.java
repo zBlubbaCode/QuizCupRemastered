@@ -108,7 +108,7 @@ public class MessageCollection {
         int maxPlayersInt = Bukkit.getMaxPlayers();String maxPlayers = String.valueOf(maxPlayersInt);
 
         input = input.replace('&', '§');
-        input = input.replace("%prefix%", prefix);
+        input = input.replace("{prefix}", prefix);
         input = input.replace("%onlineplayers%", onlinePlayers);
         input = input.replace("%maxplayers%", maxPlayers);
         input = input.replace("%n%", "\n");

@@ -1,6 +1,10 @@
 package de.zblubba.quizcupremastered.fragesystem;
 
+import de.zblubba.quizcupremastered.QuizCupRemastered;
+import de.zblubba.quizcupremastered.listeners.JoinQuitListener;
 import de.zblubba.quizcupremastered.util.MessageCollection;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -15,6 +19,7 @@ import java.sql.Statement;
 public class StartFrageCommand implements CommandExecutor {
 
     public int numberOfQuestion;
+    public static int taskidFrage;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -66,6 +71,15 @@ public class StartFrageCommand implements CommandExecutor {
                 players.sendMessage("§7[§aC§7]§a " + antwort3);
                 players.sendMessage("§7[§eD§7]§a " + antwort4);
                 players.sendMessage("§f======== §7Frage §a" + questionID + " §f========");
+
+                if(QuizCupRemastered.config.getBoolean("actionbar.enabled")) {
+                    Bukkit.getScheduler().cancelTask(JoinQuitListener.taskid);
+                    Bukkit.getScheduler().cancelTask(taskidFrage);
+
+                    taskidFrage = Bukkit.getScheduler().scheduleSyncRepeatingTask(QuizCupRemastered.getPlugin(QuizCupRemastered.class), () -> {
+                        players.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§eQuizCup §8| §7Frage §c" + questionID));
+                    }, 0, 40);
+                }
             }
 
         } catch(Exception e) {

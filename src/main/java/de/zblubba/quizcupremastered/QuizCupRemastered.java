@@ -103,10 +103,13 @@ public final class QuizCupRemastered extends JavaPlugin {
     public void registerCommands() {
         getCommand("fly").setExecutor(new FlyCommand());
         getCommand("spawn").setExecutor(new SpawnCommand());
-        getCommand("mysql").setExecutor(new MySQLCommand());
         getCommand("createfrage").setExecutor(new CreateFrageCommand());
         getCommand("addantwort").setExecutor(new AddAntwortCommand());
         getCommand("startfrage").setExecutor(new StartFrageCommand());
+        getCommand("invis").setExecutor(new InvisCommand());
+        getCommand("closeserver").setExecutor(new CloseServerCommand());
+        getCommand("closechat").setExecutor(new CloseChatCommand());
+        getCommand("points").setExecutor(new PointsCommand());
     }
 
 

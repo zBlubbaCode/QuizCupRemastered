@@ -12,9 +12,6 @@ commands:
     description: Toggles the permission to fly
   spawn:
     description: teleportiert ein spieler zum spawn
-  mysql:
-    permission: quizcup.mysql
-    description: command for testing purposes only
   createfrage:
     permission: quizcup.frage.create
     description: erstellt eine frage
@@ -27,3 +24,12 @@ commands:
   closeserver:
     permission: quizcup.close
     description: schließt / oeffnet den server
+  closechat:
+    permission: quizcup.chat.close
+    description: öffnet / schließt den chat
+  invis:
+    permission: quizcup.visibility
+    description: schaltet die sichtbarkeit von Spielern um
+  points:
+    permission: quizcup.points
+    description: setzt oder zeigt die punkte eines spielers an
