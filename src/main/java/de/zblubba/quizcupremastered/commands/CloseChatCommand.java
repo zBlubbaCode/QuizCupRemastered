@@ -22,12 +22,16 @@ public class CloseChatCommand implements CommandExecutor {
                 } else if(args[0].equalsIgnoreCase("open")){
                     isChatClosed = false;
                     Bukkit.broadcastMessage(MessageCollection.getOpenChat());
-                } else {
-                    sender.sendMessage(MessageCollection.getPrefix() + "Nutze §c/chat <close | open>");
-                }
-            } else {
-                sender.sendMessage(MessageCollection.getPrefix() + "Nutze §c/chat <close | open>");
-            }
+                } else if(args[0].equalsIgnoreCase("toggle")){
+                    if(isChatClosed) {
+                        isChatClosed = false;
+                        Bukkit.broadcastMessage(MessageCollection.getOpenChat());
+                    } else {
+                        isChatClosed = true;
+                        Bukkit.broadcastMessage(MessageCollection.getChatClosed());
+                    }
+                } else sender.sendMessage(MessageCollection.getPrefix() + "Nutze §c/chat <close | open>");
+            } else sender.sendMessage(MessageCollection.getPrefix() + "Nutze §c/chat <close | open>");
 
         } else {
             sender.sendMessage(MessageCollection.getNoPerms());

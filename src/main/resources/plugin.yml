@@ -23,13 +23,25 @@ commands:
     description: startet eine frage
   closeserver:
     permission: quizcup.close
-    description: schließt / oeffnet den server
+    description: schließt oder oeffnet den server
   closechat:
     permission: quizcup.chat.close
-    description: öffnet / schließt den chat
+    description: öffnet oder schließt den chat
   invis:
     permission: quizcup.visibility
     description: schaltet die sichtbarkeit von Spielern um
   points:
     permission: quizcup.points
-    description: setzt oder zeigt die punkte eines spielers an
+    description: setzt oder zeigt punkte eines spielers an
+  mod:
+    permission: quizcup.gui
+    description: öffnet das Moderations-GUI
+  gateitem:
+    permission: quizcup.gates
+    description: gibt dir das item für die gates
+  toolsitem:
+    permission: quizcup.tools
+    description: gibt dir das item für die tools
+  gate:
+    permission: quizcup.gates
+    description: öffnet oder schließt die gates

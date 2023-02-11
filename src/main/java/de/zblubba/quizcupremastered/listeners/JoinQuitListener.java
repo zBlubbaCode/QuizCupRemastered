@@ -24,6 +24,8 @@ public class JoinQuitListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player p = event.getPlayer();
 
+        p.sendMessage(MessageCollection.getPersonalJoinMessage(p));
+
         event.setJoinMessage(MessageCollection.getJoinMessage(p));
         if(!p.hasPermission("quizcup.helper")) {
             QuizCupRemastered.playerList.add(p.getName());

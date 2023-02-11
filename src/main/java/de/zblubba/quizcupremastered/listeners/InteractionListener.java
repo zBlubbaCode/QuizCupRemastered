@@ -21,28 +21,30 @@ public class InteractionListener implements Listener {
         Player p = event.getPlayer();
         Action action = event.getAction();
 
-        if(action == Action.RIGHT_CLICK_BLOCK) {
-            if(event.getClickedBlock().getType() == Material.OAK_BUTTON) {
-                p.performCommand("b");
-            }
-        }
-
         if(p.hasPermission("quizcup.tools")) {
             if (action != Action.RIGHT_CLICK_AIR) return;
             ItemStack item = p.getItemInHand();
             if (item.hasItemMeta()) {
                 ItemMeta meta = item.getItemMeta();
-                if (meta.getDisplayName().equals("§cNächste Frage")) {
+
+                switch(meta.getLocalizedName()) {
+                    case "gate1item" -> p.performCommand("gate 1");
+                    case "gate2item" -> p.performCommand("gate 2");
+                    case "gate3item" -> p.performCommand("gate 3");
+                    case "nextquestionItem" -> p.performCommand("startfrage next");
+                }
+
+                if (meta.getLocalizedName().equals("§cNächste Frage")) {
                     p.performCommand("startfrage next");
-                } else if (meta.getDisplayName().equals("§cTP-ALL")) {
+                } else if (meta.getLocalizedName().equals("§cTP-ALL")) {
                     p.performCommand("tp @a -2.5 107 8.5");
-                } else if (meta.getDisplayName().equals("§6Front Gate")) {
+                } else if (meta.getLocalizedName().equals("§6Front Gate")) {
                     p.performCommand("gate front");
-                } else if (meta.getDisplayName().equals("§bMid Gate")) {
+                } else if (meta.getLocalizedName().equals("§bMid Gate")) {
                     p.performCommand("gate mid");
-                } else if (meta.getDisplayName().equals("§aEnd Gate")) {
+                } else if (meta.getLocalizedName().equals("§aEnd Gate")) {
                     p.performCommand("gate end");
-                } else if (meta.getDisplayName().equals("§9Spieler §8- §cSichtbarkeit")) {
+                } else if (meta.getLocalizedName().equals("§9Spieler §8- §cSichtbarkeit")) {
                     TextComponent onMessage = new net.md_5.bungee.api.chat.TextComponent(QuizCupRemastered.getPrefix + "[§aAN§7] §8- §7Klicke, um Spieler §cunsichtbar §7zu machen!");
                     onMessage.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("§7Klicke um Spieler §cunsichtbar §7zu machen")));
                     onMessage.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/invis on"));

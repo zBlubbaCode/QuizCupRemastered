@@ -86,6 +86,13 @@ public class MessageCollection {
         return joinFormat;
     }
 
+    public static String getPersonalJoinMessage(Player p) {
+        String joinMessage = config.getString("join.personal_message");
+        joinMessage = replaceWithVariables(joinMessage);
+        joinMessage = joinMessage.replace("{player}", getPrefixOfPlayer(p));
+        return joinMessage;
+    }
+
     public static String getQuitMessage(Player p) {
         String quitFormat = config.getString("quit.message_format");
         quitFormat = replaceWithVariables(quitFormat);

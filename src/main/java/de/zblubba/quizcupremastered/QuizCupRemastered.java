@@ -4,6 +4,8 @@ import de.zblubba.quizcupremastered.commands.*;
 import de.zblubba.quizcupremastered.fragesystem.AddAntwortCommand;
 import de.zblubba.quizcupremastered.fragesystem.CreateFrageCommand;
 import de.zblubba.quizcupremastered.fragesystem.StartFrageCommand;
+import de.zblubba.quizcupremastered.guis.ModerationGUICommand;
+import de.zblubba.quizcupremastered.guis.ModerationGUIListener;
 import de.zblubba.quizcupremastered.util.*;
 import de.zblubba.quizcupremastered.listeners.*;
 import org.bukkit.Bukkit;
@@ -99,6 +101,7 @@ public final class QuizCupRemastered extends JavaPlugin {
         pm.registerEvents(new InteractionListener(), this);
         pm.registerEvents(new MotdListener(), this);
         pm.registerEvents(new JoinQuitListener(), this);
+        pm.registerEvents(new ModerationGUIListener(), this);
     }
     public void registerCommands() {
         getCommand("fly").setExecutor(new FlyCommand());
@@ -110,6 +113,10 @@ public final class QuizCupRemastered extends JavaPlugin {
         getCommand("closeserver").setExecutor(new CloseServerCommand());
         getCommand("closechat").setExecutor(new CloseChatCommand());
         getCommand("points").setExecutor(new PointsCommand());
+        getCommand("mod").setExecutor(new ModerationGUICommand());
+        getCommand("gateitem").setExecutor(new GateItemCommand());
+        getCommand("toolsitem").setExecutor(new ToolsItemCommand());
+        getCommand("gate").setExecutor(new GateCommand());
     }
 
 
